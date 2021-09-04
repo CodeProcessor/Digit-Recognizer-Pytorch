@@ -25,8 +25,12 @@ class DigitRecognizerDataset(torch.utils.data.Dataset):
 
     def __getitem__(self, index):
         _data = self.dataframe.iloc[index]
-        _label = _data.label
-        _numpy_array = np.array(_data.tolist()[1:])
+        _label = -1
+        if self.is_test:
+            _numpy_array = np.array(_data.tolist())
+        else:
+            _label = _data.label
+            _numpy_array = np.array(_data.tolist()[1:])
         image = _numpy_array.reshape((28, 28)).astype('uint8')
         # cv2.imshow('disp', _numpy_2d)
         # cv2.waitKey(0)
@@ -37,7 +41,7 @@ class DigitRecognizerDataset(torch.utils.data.Dataset):
             image, label_matrix = self.transform(image, label_matrix)
 
         if self.is_test:
-            return image, _label
+            return image, index + 1
         return image, label_matrix
 
 

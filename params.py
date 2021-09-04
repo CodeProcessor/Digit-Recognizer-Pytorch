@@ -22,4 +22,4 @@ PIN_MEMORY = True
 LOAD_MODEL = True
 LOAD_MODEL_FILE = 'trained_models/best-model-parameters.pt'
 TRAIN_CSV = '/home/dulanj/Datasets/Digit-Recognizer/digit-recognizer/train.csv'
-IMG_TEST_DIR = '/home/dulanj/Datasets/dogs-vs-cats/test1'
+TEST_CSV = '/home/dulanj/Datasets/Digit-Recognizer/digit-recognizer/test.csv'
